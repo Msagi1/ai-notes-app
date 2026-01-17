@@ -1,0 +1,17 @@
+<div style="max-width: 700px; margin: 40px auto; padding: 16px;">
+    <h2>AI Notes</h2>
+
+    <textarea rows="6" style="width: 100%; padding: 10px;" placeholder="Write your notes or ask something..."
+        [(ngModel)]="prompt"></textarea>
+
+    <div style="margin-top: 12px;">
+        <button (click)="submit()" [disabled]="loading() || !prompt.trim()">
+            {{ loading() ? 'Thinking...' : 'Ask AI' }}
+        </button>
+    </div>
+
+    <div *ngIf="response()" style="margin-top: 16px; padding: 12px; border: 1px solid #ddd;">
+        <strong>Response:</strong>
+        <pre style="white-space: pre-wrap;">{{ response() }}</pre>
+    </div>
+</div>
