@@ -1,0 +1,28 @@
+.wrap { max-width: 900px; margin: 0 auto; padding: 18px; }
+h1 { margin: 0 0 12px; font-size: 20px; }
+.muted { color: #666; }
+
+.list { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+
+.card {
+  text-align: left;
+  border: 1px solid #eee;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.row { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.title { font-weight: 600; max-width: 70%; }
+.meta { color: #777; font-size: 12px; white-space: nowrap; }
+
+.snippet {
+  margin-top: 10px;
+  color: #222;
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

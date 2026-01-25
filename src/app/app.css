@@ -1,0 +1,56 @@
+.loader-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  width: 56px;
+  height: 56px;
+  border: 6px solid #ddd;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #222;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.nav a.active {
+  background: #f2f2f2;
+}
+
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

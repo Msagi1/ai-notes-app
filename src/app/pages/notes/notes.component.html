@@ -1,17 +1,52 @@
-<div style="max-width: 700px; margin: 40px auto; padding: 16px;">
+<div class="notes-layout">
+  <section class="editor">
     <h2>AI Notes</h2>
 
-    <textarea rows="6" style="width: 100%; padding: 10px;" placeholder="Write your notes or ask something..."
-        [(ngModel)]="prompt"></textarea>
+    <textarea
+      rows="6"
+      placeholder="Write your notes or ask something..."
+      [(ngModel)]="prompt"
+    ></textarea>
 
-    <div style="margin-top: 12px;">
-        <button (click)="submit()" [disabled]="loading() || !prompt.trim()">
-            {{ loading() ? 'Thinking...' : 'Ask AI' }}
-        </button>
+    <div class="actions">
+      <button (click)="submit()" [disabled]="loadingService.isLoading()">
+        {{ loadingService.isLoading() ? 'Thinking...' : 'Ask AI' }}
+      </button>
+
+      <button (click)="newNote()" [disabled]="loadingService.isLoading()">
+        New
+      </button>
+
+      <button
+        (click)="saveNote()"
+        [disabled]="loadingService.isLoading() || !response()?.trim()"
+      >
+        Save
+      </button>
     </div>
 
-    <div *ngIf="response()" style="margin-top: 16px; padding: 12px; border: 1px solid #ddd;">
-        <strong>Response:</strong>
-        <pre style="white-space: pre-wrap;">{{ response() }}</pre>
-    </div>
+    @if (response()) {
+      <div class="response">
+        <strong>Response</strong>
+        <pre>{{ response() }}</pre>
+      </div>
+    }
+  </section>
+
+  <aside class="history">
+    <div class="history-header">
+    <h3>History</h3>
+  </div>
+
+    @for (n of notesStore.notes(); track n.id) {
+      <div class="history-item" [class.selected]="notesStore.selected()?.id === n.id" (click)="loadNote(n.id)">
+        <div class="prompt">{{ n.prompt }}</div>
+        <div class="date">
+          {{ n.createdAt | date:'MMM d, h:mm a' }}
+        </div>
+      </div>
+    } @empty {
+      <div class="empty">No saved notes yet.</div>
+    }
+  </aside>
 </div>

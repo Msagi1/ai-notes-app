@@ -1,1 +1,24 @@
-<router-outlet></router-outlet >
+<div *ngIf="loadingService.isLoading()" class="loader-backdrop">
+  <div class="loader"></div>
+</div>
+<header class="topbar">
+  <div class="brand">AI Notes</div>
+
+  <nav class="nav">
+    <a
+      routerLink="/notes"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Notes
+    </a>
+
+    <a routerLink="/summaries" routerLinkActive="active">
+      Summaries
+    </a>
+  </nav>
+</header>
+
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
