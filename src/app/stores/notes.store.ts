@@ -16,7 +16,6 @@ export const NOTES_STORE_FILE = 'src/app/stores/notes.store.ts';
 export class NotesStore {
   readonly instanceId = crypto.randomUUID();
   constructor() {
-    console.log('NotesStore constructed', this.instanceId);
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       try {
