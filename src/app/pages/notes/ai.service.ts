@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AiService {
-  private url = 'http://localhost:8787/ai';
+  private url = 'http://ai-notes-server-hl9r.onrender.com/ai';
 
   constructor(private http: HttpClient) {}
 
